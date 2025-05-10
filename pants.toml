@@ -1,0 +1,28 @@
+[GLOBAL]
+pants_version = "2.26.0"
+backend_packages = [
+    "pants.backend.experimental.python",
+    "pants.backend.python",
+]
+
+[source]
+root_patterns = [
+    "/src",
+]
+
+[python]
+pip_version = "24.2"
+interpreter_constraints = ['>3.9.1,<3.10']
+resolves_generate_lockfiles = true
+enable_resolves = true
+default_resolve = "python-default"
+tailor_py_typed_targets = false
+
+[python-infer]
+unowned_dependency_behavior = "error"
+ambiguity_resolution = "by_source_root"
+string_imports = true
+string_imports_min_dots = 2
+
+[python.resolves]
+python-default = "3rdparty/python/python-default.lock"
